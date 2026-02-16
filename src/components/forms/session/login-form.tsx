@@ -42,10 +42,9 @@ const LoginForm: React.FC = () => {
 }
     setErrors({});
     if (formData.email === "you@nexgenguest.com" && formData.password === "password123") {
-      console.log('Login successful:', formData);
-      alert('Login successful!');
-      // navigate('/dashboard');
-    } else {
+  console.log('Login successful:', formData);
+  navigate('/account-settings');
+}else {
       setSubmitError("Invalid email or password. Please try again.");
     }
   };
