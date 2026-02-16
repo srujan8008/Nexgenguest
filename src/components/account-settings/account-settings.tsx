@@ -156,8 +156,8 @@ const AccountSettings: React.FC = () => {
                           value={currentEmail} onChange={() => {}} />
                         <InputLabel label="New Email Address" type="email" id="new-email" name="new-email" 
                           placeholder="Enter new email address" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
-                        <div className="flex justify-end mt-8">
-                          <SubmitButton text="Save Email Changes" />
+                        <div className="flex justify-end mt-6">
+                          <SubmitButton text="Save Email Changes" fullWidth={false}  />
                         </div>
                       </form>
                     </div>
@@ -215,14 +215,14 @@ const AccountSettings: React.FC = () => {
                           <p className="text-left">Password must be at least 8 characters and include uppercase, lowercase, number, and special character.</p>
                         </div>
 
-                        <div className="flex justify-end gap-3 mt-8">
-                          <button type="button" onClick={() => { setCurrentPassword(''); setNewPassword(''); setConfirmPassword(''); }}
-                            className="bg-[#1E293B] text-slate-400 px-6 py-3 rounded-lg font-semibold text-sm border border-slate-700 
-                              hover:text-slate-50 hover:border-slate-600 hover:bg-slate-800 transition-all">
-                            Cancel
-                          </button>
-                          <SubmitButton text="Update Password" />
-                        </div>
+                        <div className="flex justify-end gap-3 mt-6">
+  <button type="button" onClick={() => { setCurrentPassword(''); setNewPassword(''); setConfirmPassword(''); }}
+    className="bg-[#1E293B] text-slate-400 px-6 py-3 rounded-lg font-semibold text-sm border border-slate-700 
+      hover:text-slate-50 hover:border-slate-600 hover:bg-slate-800 transition-all">
+    Cancel
+  </button>
+  <SubmitButton text="Update Password" fullWidth={false} />
+</div>
                       </form>
                     </div>
                   </div>

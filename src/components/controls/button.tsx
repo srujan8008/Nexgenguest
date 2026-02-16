@@ -3,18 +3,19 @@ import React from 'react';
 interface SubmitButtonProps {
   onSubmit?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   text?: string;
+  fullWidth?: boolean;
 }
 
-const SubmitButton: React.FC<SubmitButtonProps> = ({ onSubmit, text = "Submit" }) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({ onSubmit, text = "Submit", fullWidth = true }) => {
   return (
     <button 
       type="submit" 
       onClick={onSubmit}
-      className="relative w-full py-4 rounded-xl font-medium text-sm 
-               uppercase tracking-widest mt-8 
-               bg-slate-800 border border-slate-600 text-slate-50
+      className={`relative py-3 rounded-lg font-semibold text-sm 
+               bg-blue-600 border border-blue-600 text-white
                transition-all duration-300 overflow-hidden group
-               hover:bg-blue-600 hover:border-blue-600 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+               hover:bg-blue-500 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]
+               ${fullWidth ? 'w-full' : 'px-6'}`}
     >
       <span className="relative z-10">
         {text}
