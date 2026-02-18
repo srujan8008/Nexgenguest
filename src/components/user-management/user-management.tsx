@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Search, SlidersHorizontal, Download, X, Check } from "lucide-react";
+import logoImage from "@/assets/logow.webp";
+
 
 // ── Types ──────────────────────────────────────────────────
 type FilterType = "role" | "status";
@@ -98,7 +100,7 @@ const UserRow = ({ user, onDelete }: { user: User; onDelete: (id: string) => voi
   return (
     <tr className="border-b border-slate-700/30 hover:bg-blue-500/[0.03] transition-colors group">
       {/* User Details */}
-      <td className="px-6 py-[19px]">
+      <td className="px-6 py-[19px] text-left">
         <div className="flex items-center gap-3">
           <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${user.avatarGrad} flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0`}>
             {user.initials}
@@ -110,9 +112,9 @@ const UserRow = ({ user, onDelete }: { user: User; onDelete: (id: string) => voi
         </div>
       </td>
       {/* Email */}
-      <td className="px-6 py-[19px] text-[0.875rem] text-slate-300">{user.email}</td>
+      <td className="px-6 py-[19px] text-[0.875rem] text-slate-300 text-left">{user.email}</td>
       {/* Role */}
-      <td className="px-6 py-[19px]">
+      <td className="px-6 py-[19px] text-left">
         <span className={`inline-flex px-2.5 py-1 rounded text-[11px] font-bold tracking-[0.06em] uppercase ${ROLE_STYLES[user.role]}`}>
           {user.role}
         </span>
@@ -211,17 +213,15 @@ export default function UserManagement() {
       {/* ── TOP HEADER ── */}
       <header className="fixed top-0 left-0 right-0 h-[72px] bg-[#0F172A] border-b border-slate-700/30 flex items-center justify-between px-7 z-[100]">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-black text-white text-sm">N</div>
           <div>
-            <p className="text-sm font-bold text-slate-100 leading-none">NexGen</p>
-            <p className="text-[10px] text-slate-500 leading-none mt-0.5">Guest</p>
+            <img src={logoImage} alt="NexGen Guest" className="h-10" />
           </div>
         </div>
         <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
           <img src="https://i.pravatar.cc/150?img=12" alt="Caleb Griffin" className="w-10 h-10 rounded-full object-cover" />
           <div>
             <p className="text-[0.875rem] font-semibold text-slate-100 leading-tight">Caleb Griffin</p>
-            <p className="text-[0.75rem] text-slate-500">Admin Access</p>
+            <p className="text-[0.75rem] text-slate-500 text-left">Admin Access</p>
           </div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
@@ -265,7 +265,7 @@ export default function UserManagement() {
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
             Back to Dashboard
           </a>
-          <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-slate-400 mb-3.5 px-1.5">User Management</p>
+          <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-slate-400 mb-3.5 px-1.5 text-left">User Management</p>
           <div className="flex flex-col gap-1">
             {NAV_ITEMS.map(item => (
               <button key={item.label} onClick={() => setActiveNav(item.label)}
@@ -290,7 +290,7 @@ export default function UserManagement() {
           {/* Page Header */}
           <div className="flex items-start justify-between mb-8">
             <div>
-              <h1 className="text-[1.875rem] font-bold text-slate-100 mb-1">User Management</h1>
+              <h1 className="text-[1.875rem] font-bold text-slate-100 mb-1 text-left">User Management</h1>
               <p className="text-[0.875rem] text-slate-500">Manage system access, define roles and monitor active sessions across your organization.</p>
             </div>
             <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 hover:shadow-[0_4px_14px_rgba(59,130,246,0.35)] text-white px-5 py-3 rounded-lg text-[0.875rem] font-semibold transition-all duration-200 whitespace-nowrap">
@@ -300,7 +300,7 @@ export default function UserManagement() {
           </div>
 
           {/* Stat Cards */}
-          <div className="flex gap-5 mb-8">
+          <div className="flex gap-5 mb-8 text-left">
             <StatCard iconBg="bg-blue-500/12" label="Total Users" value="1,284"
               icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
             />
