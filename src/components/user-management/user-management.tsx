@@ -213,6 +213,7 @@ export default function UserManagement() {
       {/* ── TOP HEADER ── */}
       <header className="fixed top-0 left-0 right-0 h-[72px] bg-[#0F172A] border-b border-slate-700/30 flex items-center justify-between px-7 z-[100]">
         <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-black text-white text-sm">N</div>
           <div>
             <img src={logoImage} alt="NexGen Guest" className="h-10" />
           </div>
