@@ -3,7 +3,6 @@ import UserDetailsSection from "./section/user-details-section";
 import AccessControlSection from "./section/access-control-section";
 import ScopeDefinitionSection from "./section/scope-definition-section";
 import FormFooter from "./form-footer";
-import TipCard from "../common/cards/title-description-card";
 import TitleDescriptionCard from "../common/cards/title-description-card";
 
 const Content = () => {
