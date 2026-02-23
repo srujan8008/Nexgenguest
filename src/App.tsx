@@ -1,7 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // import LoginPage from "./pages/login-page";
-import LogoutPage from "./components/logout/logout";
+// import LogoutPage from "./components/logout/logout";
+import RoleManagement from "./components/role-management/role-management";
 // import ResetPasswordPage from './pages/reset-password-page'
 // import AccountSettingsPage from './pages/account-settings-page'
 // import UserManagement from './components/user-management/user-management'
@@ -12,7 +13,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="login" replace />} />
-        <Route path="/login" element={<LogoutPage />} />
+        {/* <Route path="/login" element={<LogoutPage />} /> */}
+          <Route path="/login" element={<RoleManagement />} />
         {/* <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/account-settings" element={<AccountSettingsPage />} />
         <Route path="/user-management" element={<UserManagement />} /> */}
