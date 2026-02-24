@@ -1,6 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import type { RoleRowProps } from "./types";
 
-const RoleRow = ({ role, onEdit }: RoleRowProps) => {
+const RoleRow = ({ role }: RoleRowProps) => {
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    // Navigate to edit permissions page with role name or id
+    navigate(`/edit-permissions/${role.name.toLowerCase().replace(/\s+/g, '-')}`);
+    // Or if you have an id: navigate(`/edit-permissions/${role.id}`);
+  };
+
   return (
     <div className="grid grid-cols-[2.5fr_1.8fr_1.8fr_1.6fr] px-7 py-5 items-center border-b border-[#1E2D42] last:border-b-0 hover:bg-[#3B82F6]/5 transition-colors">
       {/* Role Name */}
@@ -30,7 +39,7 @@ const RoleRow = ({ role, onEdit }: RoleRowProps) => {
       {/* Actions */}
       <div className="flex justify-end">
         <button
-          onClick={() => onEdit(role.name)}
+          onClick={handleEditClick}
           className="inline-flex items-center gap-2 bg-[#3B82F6]/20 text-[#60A5FA] px-4 py-2 rounded-md text-[0.8125rem] font-semibold border border-[#3B82F6]/40 hover:bg-[#3B82F6]/30 hover:border-[#3B82F6]/60 hover:text-[#93C5FD] transition-all"
         >
           Edit Permissions
