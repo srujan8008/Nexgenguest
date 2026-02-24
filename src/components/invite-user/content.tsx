@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ADD THIS IMPORT
 import UserDetailsSection from "./section/user-details-section";
 import AccessControlSection from "./section/access-control-section";
 import ScopeDefinitionSection from "./section/scope-definition-section";
@@ -6,6 +7,8 @@ import FormFooter from "./form-footer";
 import TitleDescriptionCard from "../common/cards/title-description-card";
 
 const Content = () => {
+  const navigate = useNavigate(); // ADD THIS HOOK
+  
   const [role, setRole] = useState<"staff" | "admin" | "superadmin">("staff");
   const [scope, setScope] = useState("all");
   const [properties, setProperties] = useState([
@@ -23,7 +26,7 @@ const Content = () => {
       "<strong>Super Admin:</strong> Unrestricted system access including global roles, secrets, and all hotel properties.",
   };
 
-  const handleAddProperty = (e: any) => {
+  const handleAddProperty = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if ((e.key === "Enter" || e.key === ",") && inputValue.trim()) {
       e.preventDefault();
       const newProperty = inputValue.replace(",", "").trim();
@@ -32,8 +35,23 @@ const Content = () => {
     }
   };
 
-  const removeProperty = (indexToRemove: any) => {
+  const removeProperty = (indexToRemove: number) => {
     setProperties(properties.filter((_, index) => index !== indexToRemove));
+  };
+
+  // ADD THIS FUNCTION - handles navigation when Send Invitation is clicked
+  const handleSendInvitation = () => {
+    // Get email from UserDetailsSection - you'll need to lift state up or use context
+    // For now, using placeholder
+    const email = "teammate@company.com"; // Replace with actual email from form
+    
+    navigate('/invitation-sent', {
+      state: {
+        email: email,
+        role: role,
+        scope: scope === 'all' ? 'All Hotels' : 'Specific Hotels'
+      }
+    });
   };
 
   return (
@@ -63,7 +81,8 @@ const Content = () => {
           handleAddProperty={handleAddProperty}
           removeProperty={removeProperty}
         />
-        <FormFooter />
+        {/* PASS THE HANDLER TO FORM FOOTER */}
+        <FormFooter onSendInvitation={handleSendInvitation} />
       </div>
 
       <div className="max-w-[720px]">
@@ -82,8 +101,7 @@ const Content = () => {
             </svg>
           }
           title="Invite Tip"
-          description="Organisational Admins have full control over property setups and global guest policies. Only grant this role to
-            trusted executive members."
+          description="Organisational Admins have full control over property setups and global guest policies. Only grant this role to trusted executive members."
         />
       </div>
     </main>
