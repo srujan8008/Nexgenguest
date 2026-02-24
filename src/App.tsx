@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import UserManagement from "./components/user-management-rolemodal.tsx/user-management";
+// import UserManagement from "./components/user-management-rolemodal/user-management";
+import Properties from "./components/properties/properties";
 // import LoginPage from "./pages/login-page";
 // import LogoutPage from "./components/logout/logout";
 // import RoleManagement from "./components/role-management/role-management";
@@ -20,7 +21,8 @@ function App() {
         <Route path="/account-settings" element={<AccountSettingsPage />} />
         <Route path="/user-management" element={<UserManagement />} /> */}
         {/* <Route path="/invite-user" element={<InviteUser />} /> */}
-        <Route path="/login" element={<UserManagement />} />
+        {/* <Route path="/login" element={<UserManagement />} /> */}
+        <Route path="/login" element={<Properties />} />
 
       </Routes>
     </BrowserRouter>
