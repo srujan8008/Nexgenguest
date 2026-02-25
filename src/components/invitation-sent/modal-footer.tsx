@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom"; // Add this import
+
 interface ModalFooterProps {
   onInviteAnother: () => void;
   onViewPending: () => void;
 }
 
-const ModalFooter = ({ onInviteAnother, onViewPending }: ModalFooterProps) => {
+const ModalFooter = ({ onInviteAnother }: ModalFooterProps) => {
+  const navigate = useNavigate(); // Add this hook
+
+  const handleViewPending = () => {
+    navigate('/pending-invitations'); // Navigate to pending invitations page
+  };
+
   return (
     <div className="px-8 pb-7 flex flex-col items-center gap-4 animate-[fadeUp_0.35s_0.35s_ease_both]">
       <button
@@ -20,7 +28,7 @@ const ModalFooter = ({ onInviteAnother, onViewPending }: ModalFooterProps) => {
       </button>
 
       <button
-        onClick={onViewPending}
+        onClick={handleViewPending} // Use the new handler
         className="flex items-center gap-1.5 text-[0.875rem] text-[#64748B] font-medium hover:text-[#94A3B8] transition-colors bg-transparent border-none cursor-pointer"
       >
         View Pending Invitations
